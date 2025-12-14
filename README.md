@@ -1,2 +1,0 @@
-# chartulary
-Multimedia Portfolio Website
