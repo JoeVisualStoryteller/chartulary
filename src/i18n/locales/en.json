@@ -1,0 +1,28 @@
+{
+  "nav": {
+    "home": "Home",
+    "chamber": "Chamber",
+    "paintings": "Paintings",
+    "drawings": "Drawings",
+    "graphicDesign": "Graphic Design",
+    "bookCovers": "Book Covers",
+    "shop": "Shop",
+    "diary": "Diary",
+    "artistStatement": "Artist Statement"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "close": "Close",
+    "share": "Share",
+    "search": "Search",
+    "filter": "Filter"
+  },
+  "theme": {
+    "light": "Light Mode",
+    "dark": "Dark Mode"
+  }
+}

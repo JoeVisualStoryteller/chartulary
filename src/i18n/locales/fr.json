@@ -1,0 +1,28 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "chamber": "Chambre",
+    "paintings": "Peintures",
+    "drawings": "Dessins",
+    "graphicDesign": "Design Graphique",
+    "bookCovers": "Couvertures de Livres",
+    "shop": "Boutique",
+    "diary": "Journal",
+    "artistStatement": "Déclaration de l'Artiste"
+  },
+  "common": {
+    "loading": "Chargement...",
+    "error": "Erreur",
+    "back": "Retour",
+    "next": "Suivant",
+    "previous": "Précédent",
+    "close": "Fermer",
+    "share": "Partager",
+    "search": "Rechercher",
+    "filter": "Filtrer"
+  },
+  "theme": {
+    "light": "Mode Clair",
+    "dark": "Mode Sombre"
+  }
+}

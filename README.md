@@ -4,6 +4,7 @@ An interactive, scroll-based multimedia portfolio website inspired by medieval a
 
 ## 🎨 Features
 
+### Core Features
 - **Parallax Scrolling** - Multi-layer parallax effects on the home page
 - **Interactive Navigation** - Medieval-themed chamber hub with door-style navigation
 - **Gallery Components** - Responsive image galleries for artwork
@@ -11,6 +12,31 @@ An interactive, scroll-based multimedia portfolio website inspired by medieval a
 - **Scroll Animations** - Smooth Framer Motion animations throughout
 - **Responsive Design** - Mobile-friendly layouts with desktop enhancements
 - **Medieval Theme** - Custom Tailwind CSS theme with parchment, gold, and brown colors
+
+### New Interactive Features
+- **Dark/Light Mode Toggle** - Seamless theme switching with localStorage persistence
+- **Contact Form** - EmailJS-powered contact form with validation
+- **Audio Player** - Floating medieval music player with volume controls
+- **Page Transitions** - Smooth route transitions with Framer Motion
+- **Image Lazy Loading** - Optimized image loading with Intersection Observer
+- **Image Lightbox** - Full-screen image viewer with keyboard navigation
+- **Search & Filter** - Filter galleries by category, year, and tags
+- **SEO & Metadata** - Comprehensive meta tags and Open Graph support
+- **Social Sharing** - Share buttons for Twitter, Facebook, Pinterest
+- **Easter Eggs** - Hidden interactive elements (Konami code, typing triggers)
+
+### Admin Features
+- **Firebase Integration** - Backend for dynamic content management
+- **Admin Dashboard** - Protected admin panel with authentication
+- **Comment System** - Moderated comments on diary entries
+- **Analytics** - Google Analytics 4 integration with Web Vitals tracking
+- **Internationalization** - Multi-language support (English, Spanish, French)
+
+### Technical Excellence
+- **Performance Optimized** - Code splitting, compression, minification
+- **Accessibility** - WCAG AA compliant with keyboard navigation
+- **Custom 404 Page** - Medieval-themed error page
+- **Sitemap & robots.txt** - SEO-friendly crawling configuration
 
 ## 🛠️ Tech Stack
 
@@ -58,35 +84,43 @@ chartulary/
 
 - Node.js 18+ and npm
 
-### Installation
+### Quick Start (Local Development)
 
-1. Navigate to the project directory:
 ```bash
-cd /home/footlover/Documents/Github/chartulary
-```
+# 1. Copy environment template
+cp .env.example .env.local
 
-2. Install dependencies (already done):
-```bash
+# 2. Add your credentials to .env.local (see QUICK_START.md)
+
+# 3. Install dependencies
 npm install
-```
 
-3. Start the development server:
-```bash
+# 4. Start development server
 npm run dev
+
+# 5. Open http://localhost:3000/chartulary/
 ```
 
-4. Open your browser to the URL shown (typically http://localhost:3000)
+### Deployment (GitHub Pages)
 
-### Build for Production
+This project uses **secure environment variables** for all credentials. No secrets are committed to the repository.
 
+**Option 1: Automatic (GitHub Actions)**
 ```bash
+# 1. Add secrets to GitHub (Settings → Secrets → Actions)
+# 2. Push to main branch
+git push origin main
+# GitHub Actions automatically builds and deploys
+```
+
+**Option 2: Manual (Local)**
+```bash
+# Uses your .env.local credentials
 npm run build
+npm run deploy
 ```
 
-Preview production build:
-```bash
-npm run preview
-```
+📚 **Full Instructions**: See [QUICK_START.md](QUICK_START.md) and [DEPLOYMENT_GUIDE.md](DEPLOYMENT_GUIDE.md)
 
 ## 🎯 Site Map
 
@@ -135,29 +169,33 @@ Then reference images in your components:
 { id: 1, src: '/images/your-image.jpg', alt: 'Description', title: 'Title' }
 ```
 
-## 📝 Next Steps
+## 📝 Configuration Checklist
 
-1. **Add Your Content**
-   - Replace placeholder text in ArtistStatement
-   - Add your artwork images to `/public/images/`
-   - Update image arrays in gallery pages
+### Required Setup
 
-2. **Customize Design**
-   - Add custom illustrations for parallax layers
-   - Adjust color scheme in Tailwind config
-   - Modify fonts (currently using Cinzel)
+- [ ] **Environment Variables** - Copy `.env.example` to `.env.local` and add credentials
+- [ ] **Firebase** - Create project, enable Auth/Firestore/Storage, set security rules
+- [ ] **EmailJS** - Create account, add service, create template
+- [ ] **Google Analytics** - Create GA4 property, get Measurement ID
+- [ ] **GitHub Secrets** - Add all environment variables as repository secrets
+- [ ] **URLs** - Update `robots.txt` and `sitemap.xml` with your GitHub Pages URL
+- [ ] **Audio** - Add medieval music file to `/public/audio/medieval-music.mp3`
 
-3. **Enhance Features**
-   - Add lightbox functionality for images
-   - Implement image lazy loading
-   - Add metadata and SEO tags
-   - Create custom 404 page
+### Content Customization
 
-4. **Deploy**
-   - GitHub Pages
-   - Vercel
-   - Netlify
-   - Any static hosting service
+- [ ] Replace placeholder text in ArtistStatement
+- [ ] Add your artwork images to `/public/images/`
+- [ ] Update image arrays in gallery pages with your art
+- [ ] Customize colors in `tailwind.config.js`
+- [ ] Add custom illustrations for parallax layers
+
+### Optional Enhancements
+
+- [ ] Configure Firebase admin user for CMS access
+- [ ] Set up email templates in EmailJS
+- [ ] Add more languages in i18n config
+- [ ] Customize 404 page with your branding
+- [ ] Add more easter eggs for interactive fun
 
 ## 🎭 Inspiration
 

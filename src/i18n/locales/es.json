@@ -1,0 +1,28 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "chamber": "Cámara",
+    "paintings": "Pinturas",
+    "drawings": "Dibujos",
+    "graphicDesign": "Diseño Gráfico",
+    "bookCovers": "Portadas de Libros",
+    "shop": "Tienda",
+    "diary": "Diario",
+    "artistStatement": "Declaración del Artista"
+  },
+  "common": {
+    "loading": "Cargando...",
+    "error": "Error",
+    "back": "Atrás",
+    "next": "Siguiente",
+    "previous": "Anterior",
+    "close": "Cerrar",
+    "share": "Compartir",
+    "search": "Buscar",
+    "filter": "Filtrar"
+  },
+  "theme": {
+    "light": "Modo Claro",
+    "dark": "Modo Oscuro"
+  }
+}
