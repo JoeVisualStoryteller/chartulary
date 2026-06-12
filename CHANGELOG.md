@@ -14,6 +14,7 @@ Follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) with [Semantic 
 ### Fixed
 - Enabled GitHub Pages to serve from `prod` branch
 - Rolled back Firebase integration that broke production rendering
+- Verified live at https://joevisualstoryteller.github.io/chartulary/
 
 ## [1.0.0] — 2026-06-11
 
