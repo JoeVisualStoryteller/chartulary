@@ -21,15 +21,30 @@ const entries: DiaryEntry[] = [
 
 export default function Diary() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-parchment to-amber-100">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.4 }}
+      className="min-h-screen"
+    >
       <div className="container mx-auto px-4 py-16 max-w-4xl">
         <motion.h1
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-5xl font-decorative text-center mb-12 text-medieval-brown"
+          className="text-5xl font-decorative text-center mb-4 text-ash text-shadow"
         >
-          Her Majesty's Diary
+          The Chronicles
         </motion.h1>
+
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.3 }}
+          className="text-center font-serif text-ash/50 mb-12"
+        >
+          What the knight records, the dark remembers.
+        </motion.p>
 
         <div className="space-y-12">
           {entries.map((entry, index) => (
@@ -39,22 +54,22 @@ export default function Diary() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.2 }}
-              className="bg-white/80 border-4 border-amber-800 rounded-lg p-8 shadow-xl"
+              className="bg-stone border border-iron rounded-sm p-8"
             >
-              <time className="text-sm text-amber-800 font-serif">
+              <time className="text-sm text-ember font-decorative tracking-wide">
                 {entry.date}
               </time>
-              <h2 className="text-3xl font-decorative text-medieval-brown mt-2 mb-4">
+              <h2 className="text-3xl font-decorative text-ash mt-2 mb-4">
                 {entry.title}
               </h2>
               {entry.image && (
                 <img
                   src={entry.image}
                   alt={entry.title}
-                  className="w-full h-64 object-cover rounded mb-4"
+                  className="w-full h-64 object-cover rounded-sm mb-4 border border-iron"
                 />
               )}
-              <p className="text-lg font-serif text-medieval-brown leading-relaxed">
+              <p className="text-lg font-serif text-ash/70 leading-relaxed">
                 {entry.content}
               </p>
             </motion.article>
@@ -67,8 +82,8 @@ export default function Diary() {
             animate={{ opacity: 1 }}
             className="text-center py-20"
           >
-            <p className="text-2xl font-serif text-medieval-brown/60">
-              The pages are yet to be written...
+            <p className="text-2xl font-serif text-ash/50">
+              No record survives. Yet.
             </p>
           </motion.div>
         )}
@@ -76,12 +91,12 @@ export default function Diary() {
         <div className="mt-12 text-center">
           <Link
             to="/chamber"
-            className="inline-block px-8 py-3 bg-gold text-medieval-brown font-decorative rounded-lg hover:bg-amber-500 transition-colors"
+            className="font-decorative text-ember hover:text-ash transition-colors underline underline-offset-4"
           >
-            ← Back to Chamber
+            ← Return to the Keep
           </Link>
         </div>
       </div>
-    </div>
+    </motion.div>
   )
 }

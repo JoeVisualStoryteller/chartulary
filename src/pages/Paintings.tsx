@@ -12,27 +12,42 @@ export default function Paintings() {
   ]
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-amber-900 to-medieval-brown">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.4 }}
+      className="min-h-screen bg-knight-black"
+    >
       <div className="container mx-auto px-4 py-16">
         <motion.h1
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-5xl font-decorative text-center mb-12 text-gold text-shadow"
+          className="text-5xl font-decorative text-center mb-4 text-ash text-shadow"
         >
-          Paintings
+          The <span className="text-crimson text-shadow-crimson">Dark</span> Canvas
         </motion.h1>
 
-        <Gallery items={paintings} />
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.3 }}
+          className="text-center font-serif text-ash/50 mb-12"
+        >
+          What the brush bled onto canvas. Look long, and it looks back.
+        </motion.p>
+
+        <Gallery images={paintings} />
 
         <div className="mt-12 text-center">
           <Link
             to="/chamber"
-            className="inline-block px-8 py-3 bg-gold text-medieval-brown font-decorative rounded-lg hover:bg-amber-500 transition-colors"
+            className="font-serif text-ember hover:text-ash transition-colors underline underline-offset-4"
           >
-            ← Back to Chamber
+            ← Return to the Keep
           </Link>
         </div>
       </div>
-    </div>
+    </motion.div>
   )
 }

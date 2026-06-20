@@ -8,31 +8,45 @@ interface NavigationDoor {
 }
 
 const doors: NavigationDoor[] = [
-  { title: 'Paintings', path: '/paintings', description: 'Oil paintings gallery' },
-  { title: 'Drawings', path: '/drawings', description: 'Sketches and drawings' },
-  { title: 'Graphic Design', path: '/graphic-design', description: 'Design portfolio' },
-  { title: 'Book Covers', path: '/book-covers', description: 'Book cover designs' },
-  { title: 'Shop', path: '/shop', description: 'Browse available works' },
+  { title: 'The Dark Canvas', path: '/paintings', description: 'Oil and shadow. What the light refused to show.' },
+  { title: 'The Charcoal Codex', path: '/drawings', description: 'Lines scraped from ash. Read them if you dare.' },
+  { title: 'The Iron Forge', path: '/graphic-design', description: 'Where raw form is hammered into shape.' },
+  { title: 'The Grimoires', path: '/book-covers', description: 'Bound faces of forbidden volumes. Each one a warning.' },
+  { title: 'The Black Market', path: '/shop', description: 'Trade in the dark — if your coin is good.' },
 ]
 
 export default function Chamber() {
   const navigate = useNavigate()
 
   return (
-    <div className="min-h-screen bg-medieval-brown relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute inset-0 bg-gradient-radial from-gold/20 to-transparent" />
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.4 }}
+      className="min-h-screen relative overflow-hidden"
+    >
+      {/* Fog drifting through the keep */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="fog-layer absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_40%,_rgba(74,85,104,0.25)_0%,_transparent_70%)]" />
       </div>
 
       <div className="relative z-10 container mx-auto px-4 py-16">
-        <motion.h1
+        <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-6xl font-decorative text-center mb-16 text-gold text-shadow"
+          className="text-center mb-16"
         >
-          The Chamber
-        </motion.h1>
+          <p className="text-crimson font-decorative text-sm tracking-[0.4em] uppercase mb-4 text-shadow">
+            — You stand within —
+          </p>
+          <h1 className="text-6xl font-hero text-ash text-shadow-crimson">
+            The Keep
+          </h1>
+          <p className="mt-6 text-lg font-serif text-ash/70 text-shadow">
+            Five doors. Five trials. Choose, and do not look back.
+          </p>
+        </motion.div>
 
         {/* Navigation Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto mb-16">
@@ -42,54 +56,57 @@ export default function Chamber() {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: index * 0.1 }}
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ y: -6, scale: 1.02 }}
+              whileTap={{ scale: 0.95 }}
               onClick={() => navigate(door.path)}
-              className="relative aspect-[3/4] bg-gradient-to-b from-amber-800 to-amber-900 rounded-lg border-4 border-gold cursor-pointer overflow-hidden group"
+              className="relative aspect-[3/4] bg-stone border border-iron rounded-sm cursor-pointer overflow-hidden group hover:border-crimson hover:glow-crimson transition-colors"
             >
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/60 pointer-events-none" />
               <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
-                <h2 className="text-3xl font-decorative text-gold mb-4 group-hover:scale-110 transition-transform">
+                <h2 className="text-3xl font-decorative text-ash mb-4 group-hover:text-crimson-bright transition-colors">
                   {door.title}
                 </h2>
-                <p className="text-parchment/80 font-serif">
+                <p className="text-ash/70 font-serif">
                   {door.description}
                 </p>
               </div>
-
-              {/* Door frame decoration */}
-              <div className="absolute inset-0 border-8 border-amber-950/50 pointer-events-none" />
             </motion.div>
           ))}
         </div>
 
-        {/* Special Links */}
-        <div className="flex flex-col items-center gap-8 mt-16">
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            onClick={() => navigate('/diary-entrance')}
-            className="flex items-center gap-4 px-8 py-4 bg-amber-900 border-2 border-gold rounded-lg hover:bg-amber-800 transition-colors"
-          >
-            <span className="text-2xl">🐴</span>
-            <span className="font-decorative text-gold text-xl">Visit the Diary</span>
-          </motion.button>
+        {/* Passages beyond the doors */}
+        <div className="flex flex-col items-center gap-6 mt-16 font-serif text-ash/50">
+          <p>
+            The knight keeps chronicles in a darker wing —{' '}
+            <button
+              onClick={() => navigate('/diary-entrance')}
+              className="text-ember hover:text-ash transition-colors underline underline-offset-4"
+            >
+              cross the Threshold
+            </button>
+          </p>
 
-          <motion.a
-            whileHover={{ scale: 1.05 }}
-            href="mailto:your.email@example.com"
-            className="flex items-center gap-4 px-8 py-4 bg-amber-900 border-2 border-gold rounded-lg hover:bg-amber-800 transition-colors"
-          >
-            <span className="text-2xl">🦅</span>
-            <span className="font-decorative text-gold text-xl">Send a Raven</span>
-          </motion.a>
+          <p>
+            Words for the knight travel by wing alone —{' '}
+            <a
+              href="mailto:your.email@example.com"
+              className="text-ember hover:text-ash transition-colors underline underline-offset-4"
+            >
+              send a raven
+            </a>
+          </p>
 
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            onClick={() => navigate('/artist-statement')}
-            className="text-gold hover:text-amber-500 font-serif underline"
-          >
-            About the Artist
-          </motion.button>
+          <p>
+            Or learn what binds the one who built this place —{' '}
+            <button
+              onClick={() => navigate('/artist-statement')}
+              className="text-ember hover:text-ash transition-colors underline underline-offset-4"
+            >
+              read the Knight's Oath
+            </button>
+          </p>
         </div>
       </div>
-    </div>
+    </motion.div>
   )
 }

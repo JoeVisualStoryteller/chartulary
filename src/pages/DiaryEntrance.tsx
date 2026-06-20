@@ -5,12 +5,20 @@ export default function DiaryEntrance() {
   const navigate = useNavigate()
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-amber-900 to-medieval-brown flex items-center justify-center relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-0 left-0 w-64 h-64 bg-gold rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-gold rounded-full blur-3xl" />
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.4 }}
+      className="min-h-screen bg-gradient-to-b from-stone via-knight-black to-black flex items-center justify-center relative overflow-hidden"
+    >
+      {/* Fog */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="fog-layer absolute inset-0 bg-[radial-gradient(ellipse_80%_40%_at_50%_70%,_rgba(74,85,104,0.3)_0%,_transparent_70%)]" />
       </div>
+
+      {/* Vignette */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_30%,_rgba(0,0,0,0.8)_100%)] pointer-events-none" />
 
       <div className="relative z-10 text-center px-4 max-w-3xl">
         <motion.div
@@ -19,45 +27,60 @@ export default function DiaryEntrance() {
           transition={{ duration: 1 }}
           className="space-y-8"
         >
-          <h1 className="text-5xl md:text-6xl font-decorative text-gold text-shadow leading-relaxed">
-            Oh, what is that up there I see?<br />
-            oh, truly could it possibly be?<br />
-            Why it's her majesty's very own Diary!
+          <div className="text-crimson font-decorative text-sm tracking-[0.4em] uppercase text-shadow pulse-crimson">
+            — You stand at the edge —
+          </div>
+
+          <h1 className="text-5xl md:text-6xl font-hero text-ash text-shadow leading-tight">
+            The <span className="text-crimson text-shadow-crimson">Threshold</span>
           </h1>
 
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
-            className="text-2xl md:text-3xl font-serif text-parchment text-shadow"
+            className="text-xl md:text-2xl font-serif text-ash/70 text-shadow leading-relaxed"
           >
-            A special piece it must be than!<br />
-            As you give it a good scan<br />
-            decipher only if you can
+            Beyond this door lie the Chronicles —<br />
+            the knight's own hand, set down in the dark.<br />
+            Read them, and you cannot unread them.
+          </motion.p>
+
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.9 }}
+            className="text-base font-serif text-ash/50 text-shadow"
+          >
+            Cross, or turn back. The choice is yours alone.
           </motion.p>
 
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 1 }}
+            transition={{ delay: 1.2 }}
             className="flex flex-col sm:flex-row gap-6 justify-center pt-8"
           >
-            <button
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
               onClick={() => navigate('/diary')}
-              className="px-10 py-4 bg-gold text-medieval-brown font-decorative text-xl rounded-lg hover:bg-amber-500 transition-colors shadow-2xl"
+              className="px-10 py-4 bg-crimson text-ash font-decorative text-xl rounded-sm hover:bg-crimson-bright transition-colors glow-crimson shadow-2xl"
             >
-              Open the Diary
-            </button>
+              Cross the Threshold
+            </motion.button>
 
-            <button
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
               onClick={() => navigate('/chamber')}
-              className="px-10 py-4 bg-amber-900 border-2 border-gold text-gold font-decorative text-xl rounded-lg hover:bg-amber-800 transition-colors"
+              className="px-10 py-4 bg-stone border border-iron text-ash/70 font-decorative text-xl rounded-sm hover:border-crimson hover:text-ash transition-colors"
             >
-              Return to Chamber
-            </button>
+              Retreat to the Keep
+            </motion.button>
           </motion.div>
         </motion.div>
       </div>
-    </div>
+    </motion.div>
   )
 }

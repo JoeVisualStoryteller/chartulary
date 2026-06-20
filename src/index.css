@@ -4,12 +4,38 @@
 
 @layer base {
   body {
-    @apply bg-medieval-brown text-parchment;
+    @apply bg-knight-black text-ash;
+    cursor: crosshair;
   }
 }
 
 @layer utilities {
   .text-shadow {
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9);
   }
+  .text-shadow-crimson {
+    text-shadow: 0 0 20px rgba(123, 24, 24, 0.8), 2px 2px 4px rgba(0, 0, 0, 0.9);
+  }
+  .glow-crimson {
+    box-shadow: 0 0 20px rgba(123, 24, 24, 0.6), 0 0 40px rgba(123, 24, 24, 0.2);
+  }
+}
+
+@keyframes fog-drift {
+  0%   { transform: translateX(-8%) translateY(0);    opacity: 0.12; }
+  50%  { transform: translateX(4%)  translateY(-4%);  opacity: 0.22; }
+  100% { transform: translateX(-8%) translateY(0);    opacity: 0.12; }
+}
+
+.fog-layer {
+  animation: fog-drift 24s ease-in-out infinite;
+}
+
+@keyframes pulse-crimson {
+  0%, 100% { opacity: 0.5; }
+  50%       { opacity: 1; }
+}
+
+.pulse-crimson {
+  animation: pulse-crimson 2s ease-in-out infinite;
 }

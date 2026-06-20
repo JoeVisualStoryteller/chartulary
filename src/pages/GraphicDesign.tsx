@@ -22,15 +22,31 @@ export default function GraphicDesign() {
   ]
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-amber-900 to-medieval-brown">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.4 }}
+      className="min-h-screen bg-gradient-to-b from-stone to-knight-black"
+    >
       <div className="container mx-auto px-4 py-16">
         <motion.h1
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-5xl font-decorative text-center mb-12 text-gold text-shadow"
+          className="text-5xl font-decorative text-center mb-4 text-ash text-shadow-crimson"
         >
-          Graphic Design
+          The Iron Forge
         </motion.h1>
+
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.3 }}
+          className="text-center font-serif text-ash/70 mb-12 max-w-2xl mx-auto"
+        >
+          Here the knight hammers form from shadow. Each work was struck in fire.
+          Look upon them, and judge what the anvil yields.
+        </motion.p>
 
         <div className="space-y-16 max-w-5xl mx-auto">
           {designProjects.map((project, index) => (
@@ -41,7 +57,7 @@ export default function GraphicDesign() {
               viewport={{ once: true }}
               transition={{ delay: index * 0.2 }}
             >
-              <h2 className="text-3xl font-decorative text-gold mb-6 text-center">
+              <h2 className="text-3xl font-decorative text-crimson mb-6 text-center text-shadow">
                 {project.title}
               </h2>
               <Carousel images={project.images} />
@@ -52,12 +68,12 @@ export default function GraphicDesign() {
         <div className="mt-12 text-center">
           <Link
             to="/chamber"
-            className="inline-block px-8 py-3 bg-gold text-medieval-brown font-decorative rounded-lg hover:bg-amber-500 transition-colors"
+            className="inline-block px-8 py-3 bg-crimson text-ash font-decorative rounded-sm hover:bg-crimson-bright transition-colors glow-crimson"
           >
-            ← Back to Chamber
+            ← Return to the Keep
           </Link>
         </div>
       </div>
-    </div>
+    </motion.div>
   )
 }

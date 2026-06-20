@@ -24,15 +24,15 @@ export default function Carousel({ images }: CarouselProps) {
 
   if (!images || images.length === 0) {
     return (
-      <div className="aspect-video bg-amber-900 rounded-lg flex items-center justify-center border-4 border-gold">
-        <p className="text-parchment/60 font-serif">No images available</p>
+      <div className="aspect-video bg-stone rounded-sm flex items-center justify-center border border-iron">
+        <p className="text-ash/50 font-serif">Nothing remains here.</p>
       </div>
     )
   }
 
   return (
     <div className="relative">
-      <div className="relative aspect-video bg-amber-900 rounded-lg overflow-hidden border-4 border-gold">
+      <div className="relative aspect-video bg-stone rounded-sm overflow-hidden border border-iron">
         <AnimatePresence mode="wait">
           <motion.img
             key={currentIndex}
@@ -48,8 +48,8 @@ export default function Carousel({ images }: CarouselProps) {
               const parent = e.currentTarget.parentElement
               if (parent && !parent.querySelector('.placeholder')) {
                 const placeholder = document.createElement('div')
-                placeholder.className = 'placeholder w-full h-full flex items-center justify-center bg-amber-800'
-                placeholder.innerHTML = '<p class="text-parchment/60 font-serif">Image placeholder</p>'
+                placeholder.className = 'placeholder w-full h-full flex items-center justify-center bg-stone'
+                placeholder.innerHTML = '<p class="text-ash/50 font-serif">Lost to the dark</p>'
                 parent.appendChild(placeholder)
               }
             }}
@@ -61,14 +61,14 @@ export default function Carousel({ images }: CarouselProps) {
           <>
             <button
               onClick={prev}
-              className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-medieval-brown/80 hover:bg-medieval-brown border-2 border-gold rounded-full flex items-center justify-center text-gold text-2xl transition-colors"
+              className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-stone/80 hover:bg-stone border border-iron hover:border-crimson hover:glow-crimson rounded-sm flex items-center justify-center text-ash hover:text-crimson-bright text-2xl transition-colors"
               aria-label="Previous image"
             >
               ←
             </button>
             <button
               onClick={next}
-              className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-medieval-brown/80 hover:bg-medieval-brown border-2 border-gold rounded-full flex items-center justify-center text-gold text-2xl transition-colors"
+              className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-stone/80 hover:bg-stone border border-iron hover:border-crimson hover:glow-crimson rounded-sm flex items-center justify-center text-ash hover:text-crimson-bright text-2xl transition-colors"
               aria-label="Next image"
             >
               →
@@ -85,7 +85,7 @@ export default function Carousel({ images }: CarouselProps) {
               key={index}
               onClick={() => setCurrentIndex(index)}
               className={`w-3 h-3 rounded-full transition-colors ${
-                index === currentIndex ? 'bg-gold' : 'bg-gold/30'
+                index === currentIndex ? 'bg-crimson' : 'bg-iron'
               }`}
               aria-label={`Go to image ${index + 1}`}
             />

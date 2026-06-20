@@ -10,73 +10,86 @@ export default function Home() {
     offset: ["start start", "end end"]
   })
 
-  // Parallax transformations
   const backgroundY = useTransform(scrollYProgress, [0, 1], ['0%', '50%'])
   const midgroundY = useTransform(scrollYProgress, [0, 1], ['0%', '30%'])
   const foregroundY = useTransform(scrollYProgress, [0, 1], ['0%', '15%'])
 
   return (
-    <div ref={containerRef} className="relative h-[300vh] overflow-hidden">
-      {/* Background Layer - Slowest */}
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.4 }}
+      ref={containerRef}
+      className="relative h-[300vh] overflow-hidden"
+    >
+      {/* Background Layer */}
       <motion.div
         style={{ y: backgroundY }}
-        className="fixed inset-0 bg-gradient-to-b from-amber-900 via-amber-800 to-medieval-brown"
+        className="fixed inset-0 bg-gradient-to-b from-stone via-knight-black to-black"
       >
-        <div className="absolute inset-0 opacity-20">
-          {/* Add your background illustration here */}
-        </div>
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_30%,_rgba(0,0,0,0.8)_100%)]" />
       </motion.div>
 
-      {/* Midground Layer */}
+      {/* Fog Layer */}
       <motion.div
         style={{ y: midgroundY }}
-        className="fixed inset-0 flex items-center justify-center"
+        className="fixed inset-0 pointer-events-none"
       >
-        {/* Add castle/walls illustration here */}
+        <div className="fog-layer absolute inset-0 bg-[radial-gradient(ellipse_80%_40%_at_50%_60%,_rgba(74,85,104,0.3)_0%,_transparent_70%)]" />
       </motion.div>
 
-      {/* Foreground Layer - Fastest */}
+      {/* Foreground — Content */}
       <motion.div
         style={{ y: foregroundY }}
         className="fixed inset-0 flex flex-col items-center justify-center"
       >
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 60 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.5 }}
-          className="text-center space-y-8 px-4"
+          transition={{ duration: 1.2, delay: 0.3 }}
+          className="text-center space-y-8 px-4 max-w-3xl"
         >
-          <h1 className="text-6xl font-decorative text-gold text-shadow">
-            Oi! Halt! Who goes there?
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1.5, delay: 0.1 }}
+            className="text-crimson font-hero text-lg tracking-[0.4em] uppercase mb-4 text-shadow"
+          >
+            — Halt —
+          </motion.div>
+
+          <h1 className="text-6xl md:text-7xl font-hero text-ash text-shadow leading-tight">
+            Who dares<br />
+            <span className="text-crimson text-shadow-crimson">enter here?</span>
           </h1>
-          <p className="text-2xl font-serif text-parchment text-shadow max-w-2xl">
-            You have come upon Her Majesty's lair<br />
-            Click the entrance if you dare
+
+          <p className="text-xl font-serif text-ash/70 text-shadow leading-relaxed">
+            Beyond this gate lies the keep of the Dark Knight.<br />
+            Enter if your resolve holds.
           </p>
 
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => navigate('/chamber')}
-            className="mt-8 px-12 py-4 bg-gold text-medieval-brown font-decorative text-xl rounded-lg shadow-2xl hover:bg-yellow-500 transition-colors"
+            className="mt-8 px-12 py-4 bg-crimson text-ash font-decorative text-xl rounded-sm shadow-2xl hover:bg-crimson-bright transition-colors glow-crimson"
           >
-            Enter the Chamber
+            Enter the Keep
           </motion.button>
 
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 1.5 }}
-            className="text-lg font-serif text-parchment/80 text-shadow pt-8"
+            transition={{ delay: 1.8 }}
+            className="text-base font-serif text-ash/50 text-shadow pt-4"
           >
-            If instead you wish a glance<br />
-            of what Her Majesty wrote by chance<br />
-            then{' '}
+            Or seek the knight's written word —{' '}
             <button
               onClick={() => navigate('/diary-entrance')}
-              className="text-gold hover:underline"
+              className="text-ember hover:text-ash transition-colors underline underline-offset-4"
             >
-              click where the horses prance
+              enter the threshold
             </button>
           </motion.p>
         </motion.div>
@@ -86,11 +99,11 @@ export default function Home() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 2, duration: 1 }}
-        className="fixed bottom-8 left-1/2 -translate-x-1/2 text-parchment/60 text-sm font-serif"
+        transition={{ delay: 2.5, duration: 1 }}
+        className="fixed bottom-8 left-1/2 -translate-x-1/2 text-crimson pulse-crimson font-decorative text-sm tracking-widest"
       >
-        Scroll for immersive experience ↓
+        ↓
       </motion.div>
-    </div>
+    </motion.div>
   )
 }
